@@ -1,0 +1,193 @@
+{
+  "updated": "2026-10-27T12:31:03.920859Z",
+  "assets": {
+    "gold": {
+      "name": "Gold (XAUUSD)",
+      "bullish": 100,
+      "neutral": 0,
+      "bearish": 0,
+      "bias": "Bullish",
+      "news": [
+        {
+          "title": "U.S. Treasury yields hover near multi-week lows ahead of Fed decision",
+          "source": "Investing",
+          "age": "15 min",
+          "score": 0.85
+        },
+        {
+          "title": "AI debt trouble could help Fed’s Warsh get his way with fewer rate hikes",
+          "source": "MarketWatch",
+          "age": "57 min",
+          "score": 0.84
+        }
+      ]
+    },
+    "nas": {
+      "name": "Nasdaq 100",
+      "bullish": 33,
+      "neutral": 67,
+      "bearish": 0,
+      "bias": "Bullish",
+      "news": [
+        {
+          "title": "Here’s the question three tech-sector earnings reports raise about the future of AI",
+          "source": "MarketWatch",
+          "age": "40 min",
+          "score": -0.02
+        },
+        {
+          "title": "AI debt trouble could help Fed’s Warsh get his way with fewer rate hikes",
+          "source": "MarketWatch",
+          "age": "57 min",
+          "score": 0.84
+        },
+        {
+          "title": "Big Tech’s earnings are on deck. There’s more for investors to watch than AI spending.",
+          "source": "MarketWatch",
+          "age": "1 h",
+          "score": 0.07
+        },
+        {
+          "title": "A leading Silicon Valley cheerleader just showed all the reasons to be worried about the AI bubble",
+          "source": "MarketWatch",
+          "age": "1 h",
+          "score": 0.04
+        },
+        {
+          "title": "AI stocks haven’t played by the normal valuation rules. Now that rates are higher, they may have to, says UBS",
+          "source": "MarketWatch",
+          "age": "1 h",
+          "score": -0.03
+        },
+        {
+          "title": "Dividend stocks are having an excellent October as tech sector struggles",
+          "source": "MarketWatch",
+          "age": "1 h",
+          "score": 0.92
+        }
+      ]
+    },
+    "spx": {
+      "name": "S&P 500",
+      "bullish": 23,
+      "neutral": 30,
+      "bearish": 47,
+      "bias": "Bearish",
+      "news": [
+        {
+          "title": "Why SoFi’s stock is soaring after earnings",
+          "source": "MarketWatch",
+          "age": "10 min",
+          "score": 0.26
+        },
+        {
+          "title": "PACCAR earnings matched, revenue topped estimates",
+          "source": "Investing",
+          "age": "13 min",
+          "score": 0.93
+        },
+        {
+          "title": "Earnings call transcript: SIG posts Q3 revenue beat, but shares sink 40%",
+          "source": "Investing",
+          "age": "14 min",
+          "score": -0.52
+        },
+        {
+          "title": "Earnings call transcript: Ferretti Group cuts profit outlook in Q3 2026",
+          "source": "Investing",
+          "age": "14 min",
+          "score": -0.96
+        },
+        {
+          "title": "Illinois Tool Works earnings beat by $0.03, revenue fell short of estimates",
+          "source": "Investing",
+          "age": "14 min",
+          "score": -0.63
+        },
+        {
+          "title": "U.S. Treasury yields hover near multi-week lows ahead of Fed decision",
+          "source": "Investing",
+          "age": "15 min",
+          "score": -0.85
+        },
+        {
+          "title": "Euronet earnings missed by $0.14, revenue fell short of estimates",
+          "source": "Investing",
+          "age": "17 min",
+          "score": -0.96
+        },
+        {
+          "title": "Here’s the question three tech-sector earnings reports raise about the future of AI",
+          "source": "MarketWatch",
+          "age": "40 min",
+          "score": -0.02
+        }
+      ]
+    },
+    "dow": {
+      "name": "Dow Jones",
+      "bullish": 30,
+      "neutral": 29,
+      "bearish": 41,
+      "bias": "Mixed",
+      "news": [
+        {
+          "title": "Why SoFi’s stock is soaring after earnings",
+          "source": "MarketWatch",
+          "age": "10 min",
+          "score": 0.26
+        },
+        {
+          "title": "PACCAR earnings matched, revenue topped estimates",
+          "source": "Investing",
+          "age": "13 min",
+          "score": 0.93
+        },
+        {
+          "title": "Earnings call transcript: SIG posts Q3 revenue beat, but shares sink 40%",
+          "source": "Investing",
+          "age": "14 min",
+          "score": -0.52
+        },
+        {
+          "title": "Earnings call transcript: Ferretti Group cuts profit outlook in Q3 2026",
+          "source": "Investing",
+          "age": "14 min",
+          "score": -0.96
+        },
+        {
+          "title": "Illinois Tool Works earnings beat by $0.03, revenue fell short of estimates",
+          "source": "Investing",
+          "age": "14 min",
+          "score": -0.63
+        },
+        {
+          "title": "Euronet earnings missed by $0.14, revenue fell short of estimates",
+          "source": "Investing",
+          "age": "17 min",
+          "score": -0.96
+        },
+        {
+          "title": "Here’s the question three tech-sector earnings reports raise about the future of AI",
+          "source": "MarketWatch",
+          "age": "40 min",
+          "score": -0.02
+        },
+        {
+          "title": "Big Tech’s earnings are on deck. There’s more for investors to watch than AI spending.",
+          "source": "MarketWatch",
+          "age": "1 h",
+          "score": 0.07
+        }
+      ]
+    },
+    "dax": {
+      "name": "DAX 40",
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 0,
+      "bias": "No data",
+      "news": []
+    }
+  }
+}
