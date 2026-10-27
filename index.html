@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Bias</title>
+<style>
+:root{--bg:#f3f2ee;--surface:#fbfaf7;--line:#e0ded6;--text:#23262b;--muted:#6d727a;--bull:#1f8f74;--bear:#c0504d;--neu:#a9a79e;--gold:#b8892b;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#14171c;--surface:#1b1f26;--line:#2a2f38;--text:#e4e6ea;--muted:#8d939d;--bull:#46c2a1;--bear:#e0716d;--neu:#5d636d;--gold:#d8ac55;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+.wrap{max-width:1040px;margin:0 auto;padding:20px 16px 48px}
+header{margin-bottom:18px}
+h1{font-size:20px;margin:0;font-weight:600}
+.meta{color:var(--muted);font-size:13px}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:16px}
+.tab{border:1px solid var(--line);background:transparent;color:var(--muted);padding:8px 16px;border-radius:99px;font:inherit;font-size:14px;cursor:pointer;white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+.hero{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px}
+.verdict{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.verdict b{font-size:38px;font-weight:700;letter-spacing:-.02em}
+.verdict span{color:var(--muted);font-size:15px}
+.bar{display:flex;height:14px;border-radius:99px;overflow:hidden;margin:20px 0 10px;gap:3px;background:var(--line)}
+.bar i{display:block}
+.legend{display:flex;justify-content:space-between;font-size:14px}
+.b{color:var(--bull)}.n{color:var(--muted)}.r{color:var(--bear)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:6px 20px;margin-top:16px}
+.panel h2{font-size:14px;font-weight:600;margin:16px 0 4px;color:var(--muted)}
+.row{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;padding:13px 0;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:0}
+.row p{margin:0;font-size:14px}.row small{color:var(--muted);font-size:12px}
+.chip{flex:none;font-size:12px;font-weight:600;padding:2px 9px;border-radius:99px;margin-top:2px}
+.up{background:color-mix(in srgb,var(--bull) 16%,transparent);color:var(--bull)}
+.dn{background:color-mix(in srgb,var(--bear) 16%,transparent);color:var(--bear)}
+.nt{background:color-mix(in srgb,var(--neu) 22%,transparent);color:var(--muted)}
+.foot{margin-top:18px;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>Daily Bias</h1><div class="meta" id="upd">Loading...</div></header>
+<div class="tabs" id="tabs"></div>
+<section class="hero">
+<div class="verdict"><b id="v"></b><span id="vs"></span></div>
+<div class="bar" id="bar"></div>
+<div class="legend"><span class="b" id="lb"></span><span class="n" id="ln"></span><span class="r" id="lr"></span></div>
+</section>
+<div class="panel"><h2>Latest headlines</h2><div id="news"></div></div>
+<p class="foot">Bias is a filter, not a signal. Always confirm with your own chart analysis and risk rules.</p>
+</div>
+<script>
+var D=null,cur=null;
+function el(i){return document.getElementById(i)}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function render(){
+ var d=D.assets[cur];
+ var col=d.bias=="Bullish"?"var(--bull)":d.bias=="Bearish"?"var(--bear)":"var(--text)";
+ el("v").textContent=d.bias;el("v").style.color=col;
+ el("vs").textContent=d.name;
+ el("bar").innerHTML='<i style="width:'+d.bullish+'%;background:var(--bull)"></i><i style="width:'+d.neutral+'%;background:var(--neu)"></i><i style="width:'+d.bearish+'%;background:var(--bear)"></i>';
+ el("lb").textContent="Bullish "+d.bullish+"%";
+ el("ln").textContent="Neutral "+d.neutral+"%";
+ el("lr").textContent="Bearish "+d.bearish+"%";
+ el("news").innerHTML=d.news.length?d.news.map(function(x){
+  var c=x.score>0.2?"up":x.score<-0.2?"dn":"nt";
+  var t=x.score>0.2?"Bullish":x.score<-0.2?"Bearish":"Neutral";
+  return '<div class="row"><div><p>'+esc(x.title)+'</p><small>'+esc(x.source)+' · '+esc(x.age)+' ago</small></div><span class="chip '+c+'">'+t+' '+(x.score>0?"+":"")+x.score.toFixed(2)+'</span></div>'
+ }).join(""):'<div class="row"><p>No recent headlines for this asset.</p></div>';
+ Array.prototype.forEach.call(document.querySelectorAll(".tab"),function(t){t.setAttribute("aria-selected",t.dataset.k==cur)});
+}
+fetch("data.json?t="+Date.now()).then(function(r){return r.json()}).then(function(j){
+ D=j;var keys=Object.keys(j.assets);cur=keys[0];
+ el("tabs").innerHTML=keys.map(function(k){return '<button class="tab" data-k="'+k+'">'+esc(j.assets[k].name)+'</button>'}).join("");
+ el("tabs").addEventListener("click",function(e){var k=e.target.dataset.k;if(k){cur=k;render()}});
+ el("upd").textContent="Updated "+new Date(j.updated).toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short"});
+ render();
+}).catch(function(){el("upd").textContent="Could not load data.json"});
+</script>
+</body>
+</html>
