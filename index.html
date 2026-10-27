@@ -8,14 +8,18 @@
 :root{--bg:#f3f2ee;--surface:#fbfaf7;--line:#e0ded6;--text:#23262b;--muted:#6d727a;--bull:#1f8f74;--bear:#c0504d;--neu:#a9a79e;--gold:#b8892b;color-scheme:light}
 @media (prefers-color-scheme:dark){:root{--bg:#14171c;--surface:#1b1f26;--line:#2a2f38;--text:#e4e6ea;--muted:#8d939d;--bull:#46c2a1;--bear:#e0716d;--neu:#5d636d;--gold:#d8ac55;color-scheme:dark}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;line-height:1.6}
 .wrap{max-width:1040px;margin:0 auto;padding:20px 16px 48px}
-header{margin-bottom:18px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
 h1{font-size:20px;margin:0;font-weight:600}
 .meta{color:var(--muted);font-size:13px}
-.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:16px}
+.lang{display:flex;gap:4px}
+.lang button{border:1px solid var(--line);background:transparent;color:var(--muted);padding:5px 12px;border-radius:99px;font:inherit;font-size:13px;cursor:pointer}
+.lang button.on{background:var(--text);color:var(--bg);border-color:var(--text)}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px}
 .tab{border:1px solid var(--line);background:transparent;color:var(--muted);padding:8px 16px;border-radius:99px;font:inherit;font-size:14px;cursor:pointer;white-space:nowrap}
 .tab[aria-selected="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+.groups .tab{font-weight:600}
 .hero{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px}
 .verdict{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
 .verdict b{font-size:38px;font-weight:700;letter-spacing:-.02em}
@@ -29,52 +33,104 @@ h1{font-size:20px;margin:0;font-weight:600}
 .row{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;padding:13px 0;border-top:1px solid var(--line)}
 .row:first-of-type{border-top:0}
 .row p{margin:0;font-size:14px}.row small{color:var(--muted);font-size:12px}
-.chip{flex:none;font-size:12px;font-weight:600;padding:2px 9px;border-radius:99px;margin-top:2px}
+.chip{flex:none;font-size:12px;font-weight:600;padding:2px 9px;border-radius:99px;margin-top:2px;white-space:nowrap}
 .up{background:color-mix(in srgb,var(--bull) 16%,transparent);color:var(--bull)}
 .dn{background:color-mix(in srgb,var(--bear) 16%,transparent);color:var(--bear)}
 .nt{background:color-mix(in srgb,var(--neu) 22%,transparent);color:var(--muted)}
+.ev{padding:16px 0;border-top:1px solid var(--line)}
+.ev:first-of-type{border-top:0}
+.evh{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.evt{font-weight:600;font-size:15px}
+.evs{color:var(--muted);font-size:12px}
+.nums{display:flex;gap:20px;margin:8px 0;font-size:13px;flex-wrap:wrap}
+.nums span{color:var(--muted)}.nums b{display:block;font-size:15px;color:var(--text)}
+.ev p{margin:4px 0;font-size:13px;color:var(--muted)}
+.ev p strong{color:var(--text);font-weight:600}
+textarea{width:100%;min-height:90px;margin:8px 0 14px;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;font-size:14px;resize:vertical}
 .foot{margin-top:18px;color:var(--muted);font-size:12px}
 </style>
 </head>
 <body>
 <div class="wrap">
-<header><h1>Daily Bias</h1><div class="meta" id="upd">Loading...</div></header>
+<header>
+<div><h1 id="ttl"></h1><div class="meta" id="upd"></div></div>
+<div class="lang"><button id="le">EN</button><button id="la">العربية</button></div>
+</header>
+<div class="tabs groups" id="groups"></div>
 <div class="tabs" id="tabs"></div>
 <section class="hero">
 <div class="verdict"><b id="v"></b><span id="vs"></span></div>
 <div class="bar" id="bar"></div>
 <div class="legend"><span class="b" id="lb"></span><span class="n" id="ln"></span><span class="r" id="lr"></span></div>
 </section>
-<div class="panel"><h2>Latest headlines</h2><div id="news"></div></div>
-<p class="foot">Bias is a filter, not a signal. Always confirm with your own chart analysis and risk rules.</p>
+<div class="panel"><h2 id="hh"></h2><div id="high"></div></div>
+<div class="panel"><h2 id="nh"></h2><div id="news"></div></div>
+<div class="panel"><h2 id="mh"></h2><textarea id="notes"></textarea></div>
+<p class="foot" id="foot"></p>
 </div>
 <script>
-var D=null,cur=null;
+var S={
+en:{ttl:"Daily Bias",upd:"Updated",metals:"Metals",indices:"Indices",high:"High impact events",news:"Latest headlines",notes:"My notes",ph:"Write your notes for this asset...",fc:"Forecast",pv:"Previous",ac:"Actual",up:"Upcoming",wait:"Released, waiting for data",none:"No high-impact events this week.",bullish:"Bullish",bearish:"Bearish",neutral:"Neutral",mixed:"Mixed","n/a":"No rule",what:"What it is",why:"Why",ago:" ago",pre:"",nonews:"No recent headlines for this asset.",foot:"Bias is a filter, not a signal. Always confirm with your own chart analysis and risk rules.",loc:"en-GB",err:"Could not load data.json"},
+ar:{ttl:"اتجاه اليوم",upd:"آخر تحديث",metals:"المعادن",indices:"المؤشرات",high:"أخبار عالية التأثير",news:"آخر العناوين",notes:"ملاحظاتي",ph:"اكتب ملاحظاتك عن هذا الأصل...",fc:"التوقع",pv:"السابق",ac:"الفعلي",up:"قادم",wait:"صدر، بانتظار البيانات",none:"لا توجد أخبار عالية التأثير هذا الأسبوع.",bullish:"صاعد",bearish:"هابط",neutral:"محايد",mixed:"متباين","n/a":"لا توجد قاعدة",what:"ما هو الخبر",why:"السبب",ago:"",pre:"منذ ",nonews:"لا توجد عناوين حديثة لهذا الأصل.",foot:"الاتجاه مجرد مرشّح وليس إشارة. تأكد دائمًا بتحليلك الفني وقواعد إدارة المخاطر.",loc:"ar",err:"تعذر تحميل data.json"}
+};
+var GROUPS={metals:["gold"],indices:["nas","spx","dow","dax"]};
+var D=null,C=null,cur="gold",grp="metals",lang="en";
+try{lang=localStorage.getItem("lang")||"en"}catch(e){}
 function el(i){return document.getElementById(i)}
-function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-function render(){
+function t(k){return S[lang][k]}
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function cls(b){return b=="bullish"||b>0.2?"up":b=="bearish"||b<-0.2?"dn":"nt"}
+function biasWord(b){return t(b)||t("n/a")}
+function biasCls(b){return b=="bullish"?"up":b=="bearish"?"dn":"nt"}
+function noteKey(){return "note_"+cur}
+function renderStatic(){
+ document.documentElement.lang=lang;document.documentElement.dir=lang=="ar"?"rtl":"ltr";
+ el("ttl").textContent=t("ttl");el("hh").textContent=t("high");el("nh").textContent=t("news");el("mh").textContent=t("notes");
+ el("notes").placeholder=t("ph");el("foot").textContent=t("foot");
+ el("le").className=lang=="en"?"on":"";el("la").className=lang=="ar"?"on":"";
+ el("groups").innerHTML=Object.keys(GROUPS).map(function(g){return '<button class="tab" data-g="'+g+'" aria-selected="'+(g==grp)+'">'+t(g)+'</button>'}).join("");
+ el("tabs").innerHTML=GROUPS[grp].filter(function(k){return D&&D.assets[k]}).map(function(k){return '<button class="tab" data-k="'+k+'" aria-selected="'+(k==cur)+'">'+esc(D.assets[k].name)+'</button>'}).join("");
+ if(D)el("upd").textContent=t("upd")+" "+new Date(D.updated).toLocaleString(S[lang].loc,{dateStyle:"medium",timeStyle:"short"});
+}
+function renderAsset(){
  var d=D.assets[cur];
  var col=d.bias=="Bullish"?"var(--bull)":d.bias=="Bearish"?"var(--bear)":"var(--text)";
- el("v").textContent=d.bias;el("v").style.color=col;
- el("vs").textContent=d.name;
+ var bw=d.bias=="Bullish"?t("bullish"):d.bias=="Bearish"?t("bearish"):d.bias=="Mixed"?t("mixed"):d.bias;
+ el("v").textContent=bw;el("v").style.color=col;el("vs").textContent=d.name;
  el("bar").innerHTML='<i style="width:'+d.bullish+'%;background:var(--bull)"></i><i style="width:'+d.neutral+'%;background:var(--neu)"></i><i style="width:'+d.bearish+'%;background:var(--bear)"></i>';
- el("lb").textContent="Bullish "+d.bullish+"%";
- el("ln").textContent="Neutral "+d.neutral+"%";
- el("lr").textContent="Bearish "+d.bearish+"%";
+ el("lb").textContent=t("bullish")+" "+d.bullish+"%";el("ln").textContent=t("neutral")+" "+d.neutral+"%";el("lr").textContent=t("bearish")+" "+d.bearish+"%";
  el("news").innerHTML=d.news.length?d.news.map(function(x){
-  var c=x.score>0.2?"up":x.score<-0.2?"dn":"nt";
-  var t=x.score>0.2?"Bullish":x.score<-0.2?"Bearish":"Neutral";
-  return '<div class="row"><div><p>'+esc(x.title)+'</p><small>'+esc(x.source)+' · '+esc(x.age)+' ago</small></div><span class="chip '+c+'">'+t+' '+(x.score>0?"+":"")+x.score.toFixed(2)+'</span></div>'
- }).join(""):'<div class="row"><p>No recent headlines for this asset.</p></div>';
- Array.prototype.forEach.call(document.querySelectorAll(".tab"),function(t){t.setAttribute("aria-selected",t.dataset.k==cur)});
+  var w=x.score>0.2?t("bullish"):x.score<-0.2?t("bearish"):t("neutral");
+  return '<div class="row"><div><p>'+esc(x.title)+'</p><small>'+esc(x.source)+' · '+t("pre")+esc(x.age)+t("ago")+'</small></div><span class="chip '+cls(x.score)+'">'+w+' '+(x.score>0?"+":"")+x.score.toFixed(2)+'</span></div>'
+ }).join(""):'<div class="row"><p>'+t("nonews")+'</p></div>';
+ renderHigh();
+ try{el("notes").value=localStorage.getItem(noteKey())||""}catch(e){el("notes").value=""}
 }
-fetch("data.json?t="+Date.now()).then(function(r){return r.json()}).then(function(j){
- D=j;var keys=Object.keys(j.assets);cur=keys[0];
- el("tabs").innerHTML=keys.map(function(k){return '<button class="tab" data-k="'+k+'">'+esc(j.assets[k].name)+'</button>'}).join("");
- el("tabs").addEventListener("click",function(e){var k=e.target.dataset.k;if(k){cur=k;render()}});
- el("upd").textContent="Updated "+new Date(j.updated).toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short"});
- render();
-}).catch(function(){el("upd").textContent="Could not load data.json"});
+function renderHigh(){
+ var ev=C&&C.events?C.events:[];
+ if(!ev.length){el("high").innerHTML='<div class="row"><p>'+t("none")+'</p></div>';return}
+ el("high").innerHTML=ev.map(function(e){
+  var ar=lang=="ar",title=ar?e.title_ar:e.title,what=ar?e.what_ar:e.what_en,why=ar?e.reason_ar:e.reason_en;
+  var when=new Date(e.time_utc).toLocaleString(S[lang].loc,{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+  var b=(e.bias&&e.bias[cur])||"n/a";
+  var chip=e.actual!=null?'<span class="chip '+biasCls(b)+'">'+biasWord(b)+'</span>':'<span class="chip nt">'+(e.status=="upcoming"?t("up"):t("wait"))+'</span>';
+  var ac=e.actual!=null?e.actual:"—";
+  return '<div class="ev"><div class="evh"><div><div class="evt">'+esc(title)+'</div><div class="evs">'+esc(e.country)+' · '+esc(when)+'</div></div>'+chip+'</div>'
+  +'<div class="nums"><span>'+t("fc")+'<b>'+esc(e.forecast||"—")+'</b></span><span>'+t("ac")+'<b>'+esc(ac)+'</b></span><span>'+t("pv")+'<b>'+esc(e.previous||"—")+'</b></span></div>'
+  +'<p><strong>'+t("what")+':</strong> '+esc(what)+'</p>'+(why?'<p><strong>'+t("why")+':</strong> '+esc(why)+'</p>':'')+'</div>'
+ }).join("");
+}
+function renderAll(){renderStatic();if(D)renderAsset()}
+el("groups").addEventListener("click",function(e){var g=e.target.dataset.g;if(g){grp=g;cur=GROUPS[g][0];renderAll()}});
+el("tabs").addEventListener("click",function(e){var k=e.target.dataset.k;if(k){cur=k;renderAll()}});
+el("le").onclick=function(){lang="en";try{localStorage.setItem("lang",lang)}catch(e){}renderAll()};
+el("la").onclick=function(){lang="ar";try{localStorage.setItem("lang",lang)}catch(e){}renderAll()};
+el("notes").addEventListener("input",function(){try{localStorage.setItem(noteKey(),el("notes").value)}catch(e){}});
+function load(u){return fetch(u+"?t="+Date.now()).then(function(r){if(!r.ok)throw 0;return r.json()})}
+load("calendar.json").then(function(j){C=j}).catch(function(){C=null}).then(function(){return load("data.json")}).then(function(j){
+ D=j;if(!D.assets[cur])cur=Object.keys(D.assets)[0];renderAll();
+}).catch(function(){renderStatic();el("upd").textContent=t("err")});
+renderStatic();
 </script>
 </body>
 </html>
