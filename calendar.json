@@ -1,0 +1,173 @@
+{
+  "updated": "2026-10-27T17:35:54.645571+00:00",
+  "events": [
+    {
+      "title": "Federal Funds Rate",
+      "title_ar": "قرار سعر الفائدة الفيدرالي",
+      "country": "USD",
+      "time_utc": "2026-10-28T18:00:00+00:00",
+      "forecast": "4.00%",
+      "previous": "4.00%",
+      "actual": null,
+      "status": "upcoming",
+      "what_en": "The Fed's interest rate decision (upper bound of the target range).",
+      "what_ar": "قرار الفيدرالي بشأن سعر الفائدة (الحد الأعلى للنطاق المستهدف).",
+      "reason_en": "",
+      "reason_ar": "",
+      "bias": {
+        "gold": "n/a",
+        "nas": "n/a",
+        "spx": "n/a",
+        "dow": "n/a",
+        "dax": "n/a"
+      }
+    },
+    {
+      "title": "FOMC Statement",
+      "title_ar": "FOMC Statement",
+      "country": "USD",
+      "time_utc": "2026-10-28T18:00:00+00:00",
+      "forecast": "",
+      "previous": "",
+      "actual": null,
+      "status": "upcoming",
+      "what_en": "High-impact event.",
+      "what_ar": "حدث عالي التأثير.",
+      "reason_en": "",
+      "reason_ar": "",
+      "bias": {
+        "gold": "n/a",
+        "nas": "n/a",
+        "spx": "n/a",
+        "dow": "n/a",
+        "dax": "n/a"
+      }
+    },
+    {
+      "title": "FOMC Press Conference",
+      "title_ar": "FOMC Press Conference",
+      "country": "USD",
+      "time_utc": "2026-10-28T18:30:00+00:00",
+      "forecast": "",
+      "previous": "",
+      "actual": null,
+      "status": "upcoming",
+      "what_en": "High-impact event.",
+      "what_ar": "حدث عالي التأثير.",
+      "reason_en": "",
+      "reason_ar": "",
+      "bias": {
+        "gold": "n/a",
+        "nas": "n/a",
+        "spx": "n/a",
+        "dow": "n/a",
+        "dax": "n/a"
+      }
+    },
+    {
+      "title": "Advance GDP q/q",
+      "title_ar": "Advance GDP q/q",
+      "country": "USD",
+      "time_utc": "2026-10-29T12:30:00+00:00",
+      "forecast": "3.2%",
+      "previous": "1.5%",
+      "actual": null,
+      "status": "upcoming",
+      "what_en": "High-impact event.",
+      "what_ar": "حدث عالي التأثير.",
+      "reason_en": "",
+      "reason_ar": "",
+      "bias": {
+        "gold": "n/a",
+        "nas": "n/a",
+        "spx": "n/a",
+        "dow": "n/a",
+        "dax": "n/a"
+      }
+    },
+    {
+      "title": "Core PCE Price Index m/m",
+      "title_ar": "مؤشر نفقات الاستهلاك الشخصي الأساسي (شهري)",
+      "country": "USD",
+      "time_utc": "2026-10-29T12:30:00+00:00",
+      "forecast": "0.3%",
+      "previous": "0.2%",
+      "actual": null,
+      "status": "upcoming",
+      "what_en": "The Fed's preferred inflation measure, excluding food and energy.",
+      "what_ar": "مقياس التضخم المفضل لدى الفيدرالي، دون الغذاء والطاقة.",
+      "reason_en": "",
+      "reason_ar": "",
+      "bias": {
+        "gold": "n/a",
+        "nas": "n/a",
+        "spx": "n/a",
+        "dow": "n/a",
+        "dax": "n/a"
+      }
+    },
+    {
+      "title": "Main Refinancing Rate",
+      "title_ar": "Main Refinancing Rate",
+      "country": "EUR",
+      "time_utc": "2026-10-29T13:15:00+00:00",
+      "forecast": "2.65%",
+      "previous": "2.65%",
+      "actual": null,
+      "status": "upcoming",
+      "what_en": "High-impact event.",
+      "what_ar": "حدث عالي التأثير.",
+      "reason_en": "",
+      "reason_ar": "",
+      "bias": {
+        "gold": "n/a",
+        "nas": "n/a",
+        "spx": "n/a",
+        "dow": "n/a",
+        "dax": "n/a"
+      }
+    },
+    {
+      "title": "Monetary Policy Statement",
+      "title_ar": "Monetary Policy Statement",
+      "country": "EUR",
+      "time_utc": "2026-10-29T13:15:00+00:00",
+      "forecast": "",
+      "previous": "",
+      "actual": null,
+      "status": "upcoming",
+      "what_en": "High-impact event.",
+      "what_ar": "حدث عالي التأثير.",
+      "reason_en": "",
+      "reason_ar": "",
+      "bias": {
+        "gold": "n/a",
+        "nas": "n/a",
+        "spx": "n/a",
+        "dow": "n/a",
+        "dax": "n/a"
+      }
+    },
+    {
+      "title": "ECB Press Conference",
+      "title_ar": "ECB Press Conference",
+      "country": "EUR",
+      "time_utc": "2026-10-29T13:45:00+00:00",
+      "forecast": "",
+      "previous": "",
+      "actual": null,
+      "status": "upcoming",
+      "what_en": "High-impact event.",
+      "what_ar": "حدث عالي التأثير.",
+      "reason_en": "",
+      "reason_ar": "",
+      "bias": {
+        "gold": "n/a",
+        "nas": "n/a",
+        "spx": "n/a",
+        "dow": "n/a",
+        "dax": "n/a"
+      }
+    }
+  ]
+}
