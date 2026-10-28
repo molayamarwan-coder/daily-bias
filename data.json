@@ -1,183 +1,171 @@
 {
-  "updated": "2026-10-27T12:31:03.920859Z",
+  "updated": "2026-10-28T12:00:59.302164Z",
   "assets": {
     "gold": {
       "name": "Gold (XAUUSD)",
-      "bullish": 100,
+      "bullish": 0,
       "neutral": 0,
-      "bearish": 0,
-      "bias": "Bullish",
+      "bearish": 100,
+      "bias": "Bearish",
       "news": [
         {
-          "title": "U.S. Treasury yields hover near multi-week lows ahead of Fed decision",
-          "source": "Investing",
-          "age": "15 min",
-          "score": 0.85
+          "title": "The AI boom is starting to break time-tested stock-market signals",
+          "source": "MarketWatch",
+          "age": "35 min",
+          "score": -0.22
         },
         {
-          "title": "AI debt trouble could help Fed’s Warsh get his way with fewer rate hikes",
+          "title": "Four reasons to start worrying about inflation — including the end of tariff refunds",
           "source": "MarketWatch",
-          "age": "57 min",
-          "score": 0.84
+          "age": "1 h",
+          "score": -0.21
         }
       ]
     },
     "nas": {
       "name": "Nasdaq 100",
-      "bullish": 33,
-      "neutral": 67,
-      "bearish": 0,
-      "bias": "Bullish",
+      "bullish": 23,
+      "neutral": 39,
+      "bearish": 38,
+      "bias": "Bearish",
       "news": [
         {
-          "title": "Here’s the question three tech-sector earnings reports raise about the future of AI",
+          "title": "The AI boom is starting to break time-tested stock-market signals",
           "source": "MarketWatch",
-          "age": "40 min",
-          "score": -0.02
+          "age": "35 min",
+          "score": -0.22
         },
         {
-          "title": "AI debt trouble could help Fed’s Warsh get his way with fewer rate hikes",
+          "title": "SK Hynix delivered on third-quarter results — but the outlook is what really mattered to Wall Street and the AI trade",
           "source": "MarketWatch",
-          "age": "57 min",
-          "score": 0.84
+          "age": "52 min",
+          "score": 0.07
         },
         {
-          "title": "Big Tech’s earnings are on deck. There’s more for investors to watch than AI spending.",
+          "title": "The real way to tell if Amazon’s AI spending is paying off",
           "source": "MarketWatch",
           "age": "1 h",
-          "score": 0.07
+          "score": 0.25
         },
         {
           "title": "A leading Silicon Valley cheerleader just showed all the reasons to be worried about the AI bubble",
           "source": "MarketWatch",
-          "age": "1 h",
+          "age": "9 h",
           "score": 0.04
         },
         {
-          "title": "AI stocks haven’t played by the normal valuation rules. Now that rates are higher, they may have to, says UBS",
+          "title": "Retail traders buy the dip on chip stocks — but Robinhood gets burned by the crypto market",
           "source": "MarketWatch",
-          "age": "1 h",
-          "score": -0.03
-        },
-        {
-          "title": "Dividend stocks are having an excellent October as tech sector struggles",
-          "source": "MarketWatch",
-          "age": "1 h",
-          "score": 0.92
+          "age": "13 h",
+          "score": -0.64
         }
       ]
     },
     "spx": {
       "name": "S&P 500",
-      "bullish": 23,
-      "neutral": 30,
-      "bearish": 47,
-      "bias": "Bearish",
+      "bullish": 38,
+      "neutral": 31,
+      "bearish": 31,
+      "bias": "Mixed",
       "news": [
         {
-          "title": "Why SoFi’s stock is soaring after earnings",
-          "source": "MarketWatch",
-          "age": "10 min",
-          "score": 0.26
-        },
-        {
-          "title": "PACCAR earnings matched, revenue topped estimates",
+          "title": "Earnings call transcript: Info Edge posts stronger margins in Q2 2026",
           "source": "Investing",
-          "age": "13 min",
+          "age": "14 min",
           "score": 0.93
         },
         {
-          "title": "Earnings call transcript: SIG posts Q3 revenue beat, but shares sink 40%",
+          "title": "Earnings call transcript: Ontex cuts 2026 outlook after Q3 profit slump",
           "source": "Investing",
           "age": "14 min",
-          "score": -0.52
+          "score": -0.95
         },
         {
-          "title": "Earnings call transcript: Ferretti Group cuts profit outlook in Q3 2026",
-          "source": "Investing",
-          "age": "14 min",
-          "score": -0.96
-        },
-        {
-          "title": "Illinois Tool Works earnings beat by $0.03, revenue fell short of estimates",
-          "source": "Investing",
-          "age": "14 min",
-          "score": -0.63
-        },
-        {
-          "title": "U.S. Treasury yields hover near multi-week lows ahead of Fed decision",
+          "title": "Earnings call transcript: Żabka Group Q3 2026 results show growth, slight EPS miss",
           "source": "Investing",
           "age": "15 min",
-          "score": -0.85
+          "score": 0.88
         },
         {
-          "title": "Euronet earnings missed by $0.14, revenue fell short of estimates",
+          "title": "Earnings call transcript: PVR INOX posts record Q2 2026 results as stock slips",
           "source": "Investing",
-          "age": "17 min",
-          "score": -0.96
+          "age": "15 min",
+          "score": 0.8
         },
         {
-          "title": "Here’s the question three tech-sector earnings reports raise about the future of AI",
+          "title": "The AI boom is starting to break time-tested stock-market signals",
           "source": "MarketWatch",
-          "age": "40 min",
-          "score": -0.02
+          "age": "35 min",
+          "score": -0.22
+        },
+        {
+          "title": "SK Hynix delivered on third-quarter results — but the outlook is what really mattered to Wall Street and the AI trade",
+          "source": "MarketWatch",
+          "age": "52 min",
+          "score": 0.07
+        },
+        {
+          "title": "Bill Ackman owns only a handful of stocks. Here is his rule for picking a winner.",
+          "source": "MarketWatch",
+          "age": "1 h",
+          "score": 0.0
+        },
+        {
+          "title": "A leading Silicon Valley cheerleader just showed all the reasons to be worried about the AI bubble",
+          "source": "MarketWatch",
+          "age": "9 h",
+          "score": 0.04
         }
       ]
     },
     "dow": {
       "name": "Dow Jones",
-      "bullish": 30,
+      "bullish": 47,
       "neutral": 29,
-      "bearish": 41,
-      "bias": "Mixed",
+      "bearish": 24,
+      "bias": "Bullish",
       "news": [
         {
-          "title": "Why SoFi’s stock is soaring after earnings",
-          "source": "MarketWatch",
-          "age": "10 min",
-          "score": 0.26
-        },
-        {
-          "title": "PACCAR earnings matched, revenue topped estimates",
+          "title": "Earnings call transcript: Info Edge posts stronger margins in Q2 2026",
           "source": "Investing",
-          "age": "13 min",
+          "age": "14 min",
           "score": 0.93
         },
         {
-          "title": "Earnings call transcript: SIG posts Q3 revenue beat, but shares sink 40%",
+          "title": "Earnings call transcript: Ontex cuts 2026 outlook after Q3 profit slump",
           "source": "Investing",
           "age": "14 min",
-          "score": -0.52
+          "score": -0.95
         },
         {
-          "title": "Earnings call transcript: Ferretti Group cuts profit outlook in Q3 2026",
+          "title": "Earnings call transcript: Żabka Group Q3 2026 results show growth, slight EPS miss",
           "source": "Investing",
-          "age": "14 min",
-          "score": -0.96
+          "age": "15 min",
+          "score": 0.88
         },
         {
-          "title": "Illinois Tool Works earnings beat by $0.03, revenue fell short of estimates",
+          "title": "Earnings call transcript: PVR INOX posts record Q2 2026 results as stock slips",
           "source": "Investing",
-          "age": "14 min",
-          "score": -0.63
+          "age": "15 min",
+          "score": 0.8
         },
         {
-          "title": "Euronet earnings missed by $0.14, revenue fell short of estimates",
-          "source": "Investing",
-          "age": "17 min",
-          "score": -0.96
-        },
-        {
-          "title": "Here’s the question three tech-sector earnings reports raise about the future of AI",
+          "title": "SK Hynix delivered on third-quarter results — but the outlook is what really mattered to Wall Street and the AI trade",
           "source": "MarketWatch",
-          "age": "40 min",
-          "score": -0.02
+          "age": "52 min",
+          "score": 0.07
         },
         {
-          "title": "Big Tech’s earnings are on deck. There’s more for investors to watch than AI spending.",
+          "title": "Bill Ackman owns only a handful of stocks. Here is his rule for picking a winner.",
           "source": "MarketWatch",
           "age": "1 h",
-          "score": 0.07
+          "score": 0.0
+        },
+        {
+          "title": "Retail traders buy the dip on chip stocks — but Robinhood gets burned by the crypto market",
+          "source": "MarketWatch",
+          "age": "13 h",
+          "score": -0.64
         }
       ]
     },
