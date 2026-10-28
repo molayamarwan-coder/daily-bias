@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Bias History</title>
+<style>
+:root{--bg:#f3f2ee;--surface:#fbfaf7;--line:#e0ded6;--text:#23262b;--muted:#6d727a;--bull:#1f8f74;--bear:#c0504d;--neu:#a9a79e;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#14171c;--surface:#1b1f26;--line:#2a2f38;--text:#e4e6ea;--muted:#8d939d;--bull:#46c2a1;--bear:#e0716d;--neu:#5d636d;color-scheme:dark}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding:20px 16px 48px}
+a{color:var(--muted);font-size:14px}h1{font-size:20px;margin:8px 0 14px}
+select{background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font:inherit}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:6px 20px;margin-top:16px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:11px 8px;text-align:start;border-top:1px solid var(--line);white-space:nowrap}
+th{color:var(--muted);font-weight:500;border-top:0}
+.chip{font-size:12px;font-weight:600;padding:2px 9px;border-radius:99px}
+.up{background:color-mix(in srgb,var(--bull) 16%,transparent);color:var(--bull)}
+.dn{background:color-mix(in srgb,var(--bear) 16%,transparent);color:var(--bear)}
+.nt{background:color-mix(in srgb,var(--neu) 22%,transparent);color:var(--muted)}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin-top:16px}
+.tab{border:1px solid var(--line);background:transparent;color:var(--muted);padding:7px 14px;border-radius:99px;font:inherit;font-size:14px;cursor:pointer;white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+tr.pre td{background:color-mix(in srgb,var(--bull) 9%,transparent)}
+.sum{color:var(--muted);font-size:14px;margin-top:16px}
+</style></head><body><div class="wrap">
+<a href="./" id="back"></a><h1 id="ttl"></h1>
+<select id="day"></select>
+<div class="panel"><table id="sum"></table></div>
+<div class="tabs" id="tabs"></div>
+<div class="panel"><table id="tl"></table></div>
+<p class="sum" id="rate"></p><p class="sum" id="note"></p>
+</div>
+<script>
+var NAMES={gold:"Gold",nas:"Nasdaq 100",spx:"S&P 500",dow:"Dow Jones",dax:"DAX 40"};
+var S={
+en:{back:"← Dashboard",ttl:"Bias history",asset:"Asset",pre:"Pre-open bias",last:"Last bias",move:"Day move",res:"Result",time:"Time",bias:"Bias",hit:"Pre-open hit rate (Bullish/Bearish calls only): ",of:" of ",empty:"No history yet. It fills up with each run.",note:"Pre-open = last snapshot before the US open (9:30 New York). Day move = change vs previous close.",loc:"en-GB",Bullish:"Bullish",Bearish:"Bearish",Mixed:"Mixed","Low confidence":"Low confidence"},
+ar:{back:"← لوحة المتابعة",ttl:"سجل الاتجاه",asset:"الأصل",pre:"اتجاه ما قبل الافتتاح",last:"آخر اتجاه",move:"حركة اليوم",res:"النتيجة",time:"الوقت",bias:"الاتجاه",hit:"نسبة إصابة اتجاه ما قبل الافتتاح (صاعد/هابط فقط): ",of:" من ",empty:"لا يوجد سجل بعد. يمتلئ مع كل تحديث.",note:"ما قبل الافتتاح = آخر لقطة قبل افتتاح السوق الأمريكي (9:30 نيويورك). حركة اليوم = التغير مقارنة بإغلاق أمس.",loc:"ar",Bullish:"صاعد",Bearish:"هابط",Mixed:"متباين","Low confidence":"ثقة منخفضة"}};
+var lang="en";try{lang=localStorage.getItem("lang")||"en"}catch(e){}
+function t(k){return S[lang][k]||k}
+function el(i){return document.getElementById(i)}
+function chip(b){return '<span class="chip '+(b=="Bullish"?"up":b=="Bearish"?"dn":"nt")+'">'+t(b)+'</span>'}
+function lt(d,m){return new Date(d+"T"+m+":00Z").toLocaleTimeString(S[lang].loc,{hour:"2-digit",minute:"2-digit"})}
+function res(b,m){if(m==null||(b!="Bullish"&&b!="Bearish"))return "–";return ((b=="Bullish")==(m>0))?"✓":"✗"}
+var H=null,day=null,cur="gold";
+function head(){document.documentElement.lang=lang;document.documentElement.dir=lang=="ar"?"rtl":"ltr";el("back").textContent=t("back");el("ttl").textContent=t("ttl");el("note").textContent=t("note")}
+function render(){
+ head();
+ var days=Object.keys(H.days).sort().reverse();
+ el("day").innerHTML=days.map(function(d){return '<option'+(d==day?' selected':'')+'>'+d+'</option>'}).join("");
+ var D=H.days[day],sn=D.snaps,pre=D.pre!=null?sn[D.pre]:null,last=sn[sn.length-1],out=D.out||{};
+ var h='<tr><th>'+t("asset")+'</th><th>'+t("pre")+'</th><th>'+t("last")+'</th><th>'+t("move")+'</th><th>'+t("res")+'</th></tr>';
+ Object.keys(NAMES).forEach(function(k){
+  var pb=pre&&pre.a[k]?pre.a[k][3]:null,lb=last.a[k]?last.a[k][3]:null,m=out[k];
+  h+='<tr><td>'+NAMES[k]+'</td><td>'+(pb?chip(pb)+' '+lt(day,pre.t):"–")+'</td><td>'+(lb?chip(lb):"–")+'</td><td>'+(m==null?"–":(m>0?"+":"")+m+"%")+'</td><td>'+res(pb,m)+'</td></tr>'});
+ el("sum").innerHTML=h;
+ el("tabs").innerHTML=Object.keys(NAMES).map(function(k){return '<button class="tab" data-k="'+k+'" aria-selected="'+(k==cur)+'">'+NAMES[k]+'</button>'}).join("");
+ var r='<tr><th>'+t("time")+'</th><th>'+t("bias")+'</th><th>%</th></tr>';
+ sn.forEach(function(s,i){var a=s.a[cur];if(!a)return;r+='<tr'+(i==D.pre?' class="pre"':'')+'><td>'+lt(day,s.t)+'</td><td>'+chip(a[3])+'</td><td>'+a[0]+' / '+a[1]+' / '+a[2]+'</td></tr>'});
+ el("tl").innerHTML=r;
+ var ok=0,n=0;
+ Object.keys(H.days).forEach(function(d){var X=H.days[d];if(X.pre==null||!X.out)return;var p=X.snaps[X.pre];Object.keys(NAMES).forEach(function(k){var q=res(p.a[k]&&p.a[k][3],X.out[k]);if(q=="✓"){ok++;n++}else if(q=="✗")n++})});
+ el("rate").textContent=n?t("hit")+ok+t("of")+n+" ("+Math.round(ok/n*100)+"%)":"";
+}
+el("day").onchange=function(){day=this.value;render()};
+el("tabs").addEventListener("click",function(e){var k=e.target.dataset.k;if(k){cur=k;render()}});
+fetch("history.json?t="+Date.now()).then(function(r){return r.json()}).then(function(j){H=j;var ds=Object.keys(j.days).sort();if(!ds.length)throw 0;day=ds[ds.length-1];render()}).catch(function(){head();el("rate").textContent=t("empty")});
+</script></body></html>
