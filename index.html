@@ -101,7 +101,7 @@ function renderAsset(){
  el("lb").textContent=t("bullish")+" "+d.bullish+"%";el("ln").textContent=t("neutral")+" "+d.neutral+"%";el("lr").textContent=t("bearish")+" "+d.bearish+"%";
  el("news").innerHTML=d.news.length?d.news.map(function(x){
   var w=x.score>0.2?t("bullish"):x.score<-0.2?t("bearish"):t("neutral");
-  return '<div class="row"><div><p>'+esc(x.title)+'</p><small>'+esc(x.source)+' · '+t("pre")+esc(x.age)+t("ago")+'</small></div><span class="chip '+cls(x.score)+'">'+w+' '+(x.score>0?"+":"")+x.score.toFixed(2)+'</span></div>'
+  return '<div class="row"><div><p>'+esc(lang=="ar"&&x.title_ar?x.title_ar:x.title)+'</p><small>'+esc(x.source)+' · '+(lang=="ar"&&x.age_ar?t("pre")+esc(x.age_ar):esc(x.age)+" ago")+'</small></div><span class="chip '+cls(x.score)+'">'+w+' '+(x.score>0?"+":"")+x.score.toFixed(2)+'</span></div>'
  }).join(""):'<div class="row"><p>'+t("nonews")+'</p></div>';
  renderHigh();
  try{el("notes").value=localStorage.getItem(noteKey())||""}catch(e){el("notes").value=""}
