@@ -1,181 +1,415 @@
 {
-  "updated": "2026-10-28T12:00:59.302164Z",
+  "updated": "2026-10-28T15:14:27.746374Z",
   "assets": {
     "gold": {
       "name": "Gold (XAUUSD)",
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 100,
-      "bias": "Bearish",
+      "bullish": 29,
+      "neutral": 36,
+      "bearish": 35,
+      "bias": "Mixed",
+      "count": 30,
       "news": [
         {
-          "title": "The AI boom is starting to break time-tested stock-market signals",
-          "source": "MarketWatch",
-          "age": "35 min",
-          "score": -0.22
+          "title": "Gold Prices Go Up. Rolex Prices Follow. So Why Don’t They Come Back Down?",
+          "source": "SchiffGold.com",
+          "age": "16 min",
+          "score": -0.04
         },
         {
-          "title": "Four reasons to start worrying about inflation — including the end of tariff refunds",
+          "title": "Gold dip draws Asian buyers as North American funds lose cash",
+          "source": "The Northern Miner",
+          "age": "27 min",
+          "score": -0.81
+        },
+        {
+          "title": "Current price of gold as of October 28, 2026",
+          "source": "Fortune",
+          "age": "1 h",
+          "score": -0.03
+        },
+        {
+          "title": "Gold stalls its recovery as markets brace for Fed interest rate decision",
+          "source": "FXStreet",
+          "age": "1 h",
+          "score": -0.02
+        },
+        {
+          "title": "Is that used EV worth the price? This checklist could save you thousands of dollars.",
           "source": "MarketWatch",
           "age": "1 h",
-          "score": -0.21
+          "score": -0.03
+        },
+        {
+          "title": "Gold Price Forecast: $4,096–$4,125 Zone Sets the Tone After Fed Decision",
+          "source": "FXEmpire",
+          "age": "1 h",
+          "score": 0.07
+        },
+        {
+          "title": "Gold price at CAD$5,684/oz after Bank of Canada raises 25 bps, sees growth slowing in Q4 before rebounding in 2028",
+          "source": "Kitco",
+          "age": "1 h",
+          "score": 0.61
+        },
+        {
+          "title": "Metals Exploration shares fall as La India delay offsets strong Runruno quarter",
+          "source": "Yahoo Finance UK",
+          "age": "1 h",
+          "score": -0.94
+        },
+        {
+          "title": "Gold Price Forecast: XAU/USD Holds Above $4,039 as Oil Jumps Before Fed Decision",
+          "source": "FXLeaders",
+          "age": "2 h",
+          "score": 0.86
+        },
+        {
+          "title": "Gold Price Today on October 28, 2026",
+          "source": "USA Today",
+          "age": "2 h",
+          "score": 0.0
+        },
+        {
+          "title": "JPMorgan Private Bank: Gold prices are unlikely to bottom out until the rate-hiking cycle ends, with little support below $4,000.",
+          "source": "富途牛牛",
+          "age": "3 h",
+          "score": -0.68
+        },
+        {
+          "title": "India Gold price today: Gold declines, FXStreet data shows",
+          "source": "www.tmgm.com",
+          "age": "3 h",
+          "score": -0.93
         }
       ]
     },
     "nas": {
       "name": "Nasdaq 100",
-      "bullish": 23,
-      "neutral": 39,
-      "bearish": 38,
-      "bias": "Bearish",
+      "bullish": 24,
+      "neutral": 46,
+      "bearish": 30,
+      "bias": "Mixed",
+      "count": 30,
       "news": [
         {
-          "title": "The AI boom is starting to break time-tested stock-market signals",
+          "title": "Vertiv earnings just sent an upbeat signal about AI ahead of Big Tech results",
           "source": "MarketWatch",
-          "age": "35 min",
-          "score": -0.22
+          "age": "13 min",
+          "score": 0.86
         },
         {
-          "title": "SK Hynix delivered on third-quarter results — but the outlook is what really mattered to Wall Street and the AI trade",
-          "source": "MarketWatch",
-          "age": "52 min",
-          "score": 0.07
-        },
-        {
-          "title": "The real way to tell if Amazon’s AI spending is paying off",
-          "source": "MarketWatch",
-          "age": "1 h",
-          "score": 0.25
-        },
-        {
-          "title": "A leading Silicon Valley cheerleader just showed all the reasons to be worried about the AI bubble",
-          "source": "MarketWatch",
-          "age": "9 h",
-          "score": 0.04
-        },
-        {
-          "title": "Retail traders buy the dip on chip stocks — but Robinhood gets burned by the crypto market",
-          "source": "MarketWatch",
-          "age": "13 h",
+          "title": "Nasdaq Futures Rise on SK Hynix Earnings Blowout",
+          "source": "Schaeffer's Investment Research",
+          "age": "2 h",
           "score": -0.64
+        },
+        {
+          "title": "Nasdaq futures hit by heaviest CTA selling in over a year",
+          "source": "TradingView",
+          "age": "2 h",
+          "score": -0.8
+        },
+        {
+          "title": "Nasdaq futures rise as SK Hynix sparks chips rally; Fed decision, earnings ahead By Investing.com",
+          "source": "Investing.com South Africa",
+          "age": "2 h",
+          "score": 0.37
+        },
+        {
+          "title": "$500B Asset Manager Brings Nasdaq-100 to Blockchain Through Stellar and Centrifuge",
+          "source": "Yahoo Finance",
+          "age": "3 h",
+          "score": 0.54
+        },
+        {
+          "title": "Invesco NASDAQ 100 ETF (QQQM) Stock Price, News, Quote & History",
+          "source": "Yahoo! Finance Canada",
+          "age": "3 h",
+          "score": -0.02
+        },
+        {
+          "title": "Invesco NASDAQ 100 ETF (QQQM) Adds NVIDIA and Apple on Oct. 26",
+          "source": "Yahoo Finance",
+          "age": "4 h",
+          "score": 0.05
+        },
+        {
+          "title": "The Nasdaq-100 is onchain. What does a JQQQ holder actually own?",
+          "source": "Crypto News",
+          "age": "4 h",
+          "score": -0.02
+        },
+        {
+          "title": "Why GM and Hilton are ditching the NYSE for Nasdaq",
+          "source": "Fortune",
+          "age": "4 h",
+          "score": -0.1
+        },
+        {
+          "title": "Nasdaq Daily: Why Early Forward Losses Stay in the Record for CME_MINI:NQ1! by The_Strategic_Vault",
+          "source": "TradingView",
+          "age": "4 h",
+          "score": -0.71
+        },
+        {
+          "title": "Nasdaq 100 Forecast: NDX rebounds as Anthropic files for IPO",
+          "source": "StoneX",
+          "age": "4 h",
+          "score": -0.07
+        },
+        {
+          "title": "Janus Henderson and Centrifuge launch blockchain-native fund tracking the Nasdaq 100",
+          "source": "Funds Europe",
+          "age": "5 h",
+          "score": 0.07
         }
       ]
     },
     "spx": {
       "name": "S&P 500",
-      "bullish": 38,
-      "neutral": 31,
+      "bullish": 40,
+      "neutral": 29,
       "bearish": 31,
       "bias": "Mixed",
+      "count": 30,
       "news": [
         {
-          "title": "Earnings call transcript: Info Edge posts stronger margins in Q2 2026",
-          "source": "Investing",
-          "age": "14 min",
-          "score": 0.93
-        },
-        {
-          "title": "Earnings call transcript: Ontex cuts 2026 outlook after Q3 profit slump",
-          "source": "Investing",
-          "age": "14 min",
-          "score": -0.95
-        },
-        {
-          "title": "Earnings call transcript: Żabka Group Q3 2026 results show growth, slight EPS miss",
-          "source": "Investing",
-          "age": "15 min",
-          "score": 0.88
-        },
-        {
-          "title": "Earnings call transcript: PVR INOX posts record Q2 2026 results as stock slips",
-          "source": "Investing",
-          "age": "15 min",
-          "score": 0.8
-        },
-        {
-          "title": "The AI boom is starting to break time-tested stock-market signals",
+          "title": "These software stocks could be winners as earnings season kicks into high gear",
           "source": "MarketWatch",
-          "age": "35 min",
-          "score": -0.22
+          "age": "8 min",
+          "score": 0.9
         },
         {
-          "title": "SK Hynix delivered on third-quarter results — but the outlook is what really mattered to Wall Street and the AI trade",
+          "title": "Earnings call transcript: Rush Enterprises posts Q3 2026 revenue beat, shares fall",
+          "source": "Investing",
+          "age": "8 min",
+          "score": -0.87
+        },
+        {
+          "title": "Ufp Industries faces earnings test as lumber market weakens",
+          "source": "Investing",
+          "age": "9 min",
+          "score": -0.96
+        },
+        {
+          "title": "Renasant Q3 2026 slides: loan growth surges despite earnings miss",
+          "source": "Investing",
+          "age": "9 min",
+          "score": 0.64
+        },
+        {
+          "title": "EPR Properties earnings on deck: Can box office rebound lift REIT?",
+          "source": "Investing",
+          "age": "9 min",
+          "score": 0.47
+        },
+        {
+          "title": "Vertiv earnings just sent an upbeat signal about AI ahead of Big Tech results",
           "source": "MarketWatch",
-          "age": "52 min",
+          "age": "13 min",
+          "score": 0.86
+        },
+        {
+          "title": "History Says Predicting a Recession Is Risky. Here's What to Do Instead.",
+          "source": "The Motley Fool",
+          "age": "15 min",
+          "score": -0.19
+        },
+        {
+          "title": "S&P 500’s lucky date meets its Fed-day losing streak",
+          "source": "TradingView",
+          "age": "18 min",
+          "score": -0.29
+        },
+        {
+          "title": "The S&P 500 Is Approaching a Valuation Not Seen Since the Peak of the Dot-Com Bubble, and History Suggests a Crash Could Follow",
+          "source": "The Motley Fool",
+          "age": "40 min",
+          "score": -0.84
+        },
+        {
+          "title": "If I Were Brand New to Investing, This Is the 1 Surefire ETF I'd Buy and Hold for the Next 30 Years",
+          "source": "The Motley Fool",
+          "age": "1 h",
+          "score": 0.09
+        },
+        {
+          "title": "What Sent UPS Stock Higher?",
+          "source": "Trefis",
+          "age": "1 h",
           "score": 0.07
         },
         {
-          "title": "Bill Ackman owns only a handful of stocks. Here is his rule for picking a winner.",
-          "source": "MarketWatch",
+          "title": "Can Hims & Hers Stock Fall 30%?",
+          "source": "Trefis",
           "age": "1 h",
-          "score": 0.0
-        },
-        {
-          "title": "A leading Silicon Valley cheerleader just showed all the reasons to be worried about the AI bubble",
-          "source": "MarketWatch",
-          "age": "9 h",
-          "score": 0.04
+          "score": -0.94
         }
       ]
     },
     "dow": {
       "name": "Dow Jones",
-      "bullish": 47,
-      "neutral": 29,
-      "bearish": 24,
-      "bias": "Bullish",
+      "bullish": 14,
+      "neutral": 38,
+      "bearish": 48,
+      "bias": "Bearish",
+      "count": 30,
       "news": [
         {
-          "title": "Earnings call transcript: Info Edge posts stronger margins in Q2 2026",
-          "source": "Investing",
-          "age": "14 min",
-          "score": 0.93
+          "title": "US markets today: NASDAQ 100, Dow Jones and S&P 500 trade on the flat line ahead of Fed decision; SK Hynix soars 10%",
+          "source": "Upstox",
+          "age": "58 min",
+          "score": 0.53
         },
         {
-          "title": "Earnings call transcript: Ontex cuts 2026 outlook after Q3 profit slump",
-          "source": "Investing",
-          "age": "14 min",
-          "score": -0.95
-        },
-        {
-          "title": "Earnings call transcript: Żabka Group Q3 2026 results show growth, slight EPS miss",
-          "source": "Investing",
-          "age": "15 min",
-          "score": 0.88
-        },
-        {
-          "title": "Earnings call transcript: PVR INOX posts record Q2 2026 results as stock slips",
-          "source": "Investing",
-          "age": "15 min",
-          "score": 0.8
-        },
-        {
-          "title": "SK Hynix delivered on third-quarter results — but the outlook is what really mattered to Wall Street and the AI trade",
-          "source": "MarketWatch",
-          "age": "52 min",
-          "score": 0.07
-        },
-        {
-          "title": "Bill Ackman owns only a handful of stocks. Here is his rule for picking a winner.",
-          "source": "MarketWatch",
+          "title": "Dow Jones Holds Steady Ahead of Fed Rate Decision",
+          "source": "TipRanks",
           "age": "1 h",
-          "score": 0.0
+          "score": 0.18
         },
         {
-          "title": "Retail traders buy the dip on chip stocks — but Robinhood gets burned by the crypto market",
-          "source": "MarketWatch",
-          "age": "13 h",
+          "title": "The Dow Jones Index Opens 0.08% Lower",
+          "source": "TradingView",
+          "age": "1 h",
+          "score": -0.23
+        },
+        {
+          "title": "US Stock Market Today: S&P, Nasdaq Jump As Wall Street Bets Rate Pause Ahead Of Fed Verdict",
+          "source": "NDTV Profit",
+          "age": "1 h",
+          "score": -0.44
+        },
+        {
+          "title": "Wall Street Futures Edge Higher as SK Hynix Results Support AI Stocks Ahead of Fed Decision: Dow Jones, S&P, Nasdaq",
+          "source": "Yahoo Finance",
+          "age": "1 h",
+          "score": 0.18
+        },
+        {
+          "title": "Dow Jones Futures Fall, Techs Rise As SK Hynix Crushes Views; Fed, Microsoft, Google On Deck",
+          "source": "Investor's Business Daily",
+          "age": "2 h",
           "score": -0.64
+        },
+        {
+          "title": "Quantix Commodity Index rebrands as S&P Quantix...",
+          "source": "Pluang",
+          "age": "2 h",
+          "score": 0.04
+        },
+        {
+          "title": "S&P Dow Jones Indices partners with Quantix on commodity index By Investing.com",
+          "source": "Investing.com UK",
+          "age": "2 h",
+          "score": 0.03
+        },
+        {
+          "title": "S&P Dow Jones Indices and Quantix Commodities Collaborate to Launch Co-Branded Commodity Indices",
+          "source": "PR Newswire",
+          "age": "2 h",
+          "score": 0.3
+        },
+        {
+          "title": "Dow Jones faces Fed decision ahead of the open after 16-point gain",
+          "source": "ad-hoc-news.de",
+          "age": "2 h",
+          "score": -0.4
+        },
+        {
+          "title": "US markets today: Dow, S&P 500, Nasdaq futures hint mixed open ahead of US Fed outcome; SK Hynix, Logitech, stocks to watch",
+          "source": "Upstox",
+          "age": "2 h",
+          "score": 0.09
+        },
+        {
+          "title": "SPDR Dow Jones Industrial Average ETF Trust: Pivot points",
+          "source": "TipRanks",
+          "age": "2 h",
+          "score": 0.0
         }
       ]
     },
     "dax": {
       "name": "DAX 40",
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 0,
-      "bias": "No data",
-      "news": []
+      "bullish": 56,
+      "neutral": 14,
+      "bearish": 30,
+      "bias": "Bullish",
+      "count": 26,
+      "news": [
+        {
+          "title": "Wall Street rises before FOMC as chip stocks rally on SK hynix earnings",
+          "source": "Chosunbiz",
+          "age": "1 h",
+          "score": 0.22
+        },
+        {
+          "title": "STOXX 600 inches lower as investors sift through earnings, higher oil prices",
+          "source": "Reuters",
+          "age": "4 h",
+          "score": -0.87
+        },
+        {
+          "title": "Global shares are mixed after US stock rally, and oil prices gain more than 1%",
+          "source": "WRAL",
+          "age": "5 h",
+          "score": 0.23
+        },
+        {
+          "title": "European stocks steady as investors weigh corporate results and rate outlook",
+          "source": "TradingView",
+          "age": "6 h",
+          "score": -0.66
+        },
+        {
+          "title": "Fuchs Petrolub stock at EUR 44.85 pre-market: lubricant maker falls 0.24 percent",
+          "source": "ad-hoc-news.de",
+          "age": "8 h",
+          "score": -0.94
+        },
+        {
+          "title": "Hochtief stock at EUR 383.40 ahead of the Xetra open: infrastructure rises 0.58 percent",
+          "source": "ad-hoc-news.de",
+          "age": "8 h",
+          "score": 0.89
+        },
+        {
+          "title": "Deutsche Börse Extends Access to DAX 40 Stocks Beyond Xetra Hours",
+          "source": "FintechNews CH",
+          "age": "8 h",
+          "score": 0.7
+        },
+        {
+          "title": "Beiersdorf stock confirms 2026 guidance, slightly lower pre-market",
+          "source": "ad-hoc-news.de",
+          "age": "8 h",
+          "score": -0.17
+        },
+        {
+          "title": "European Stocks - 27-10-26",
+          "source": "Armenpress",
+          "age": "9 h",
+          "score": 0.03
+        },
+        {
+          "title": "Germany's DAX 40 Falls 0.75% to 25,181.65 as French Worries and an MTU Slump Extend Weekly Loss to 1.7%",
+          "source": "BBN Times",
+          "age": "12 h",
+          "score": -0.95
+        },
+        {
+          "title": "Germany's DAX 40 Climbs 0.77% to 25,606.65 as Infineon and Siemens Energy Lead Frankfurt Higher Amid US-Iran Negotiations",
+          "source": "BBN Times",
+          "age": "16 h",
+          "score": 0.84
+        },
+        {
+          "title": "Freedom assessed DAX prospects after the German market’s rebound",
+          "source": "Freedom Broker",
+          "age": "20 h",
+          "score": 0.89
+        }
+      ]
     }
   }
 }
