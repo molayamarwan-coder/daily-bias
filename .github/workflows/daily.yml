@@ -3,7 +3,7 @@ name: Daily Bias
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 6 * * 1-5"
+    - cron: "0 6,11 * * 1-5"
 
 permissions:
   contents: write
@@ -24,4 +24,5 @@ jobs:
           git config user.email "bias-bot@users.noreply.github.com"
           git add data.json
           git commit -m "update bias" || echo "no changes"
+          git pull --rebase
           git push
