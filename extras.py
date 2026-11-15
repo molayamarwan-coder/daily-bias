@@ -18,25 +18,52 @@ def save(path, obj):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(obj, f, ensure_ascii=False, separators=(",", ":"))
 
+_pipe = None
+def local_tr(text):
+    global _pipe
+    if _pipe is None:
+        from transformers import pipeline
+        _pipe = pipeline("translation", model="Helsinki-NLP/opus-mt-en-ar")
+    return _pipe(text, max_length=200)[0]["translation_text"]
+
+google_fails = 0
+def translate(text):
+    global google_fails
+    if google_fails < 2:
+        try:
+            q = urllib.parse.urlencode({"client": "gtx", "sl": "en", "tl": "ar", "dt": "t", "q": text})
+            res = fetch("https://translate.googleapis.com/translate_a/single?" + q)
+            out = "".join(p[0] for p in res[0] if p[0])
+            if out:
+                return out
+        except Exception as ex:
+            google_fails += 1
+            print("google translate failed:", ex)
+    try:
+        return local_tr(text)
+    except Exception as ex:
+        print("local translate failed:", ex)
+        return ""
+
 data = load("data.json", None)
 cache = load("translations.json", {})
 newcache = {}
+done = fresh = 0
 for a in data["assets"].values():
     for n in a["news"]:
         t = n["title"]
         ar = cache.get(t, "")
         if not ar:
-            try:
-                q = urllib.parse.urlencode({"client": "gtx", "sl": "en", "tl": "ar", "dt": "t", "q": t})
-                res = fetch("https://translate.googleapis.com/translate_a/single?" + q)
-                ar = "".join(p[0] for p in res[0] if p[0])
-            except Exception as ex:
-                print("translate failed:", ex)
+            ar = translate(t)
+            if ar:
+                fresh += 1
         if ar:
             newcache[t] = ar
             n["title_ar"] = ar
+            done += 1
         num, unit = n["age"].split()
         n["age_ar"] = num + (" دقيقة" if unit == "min" else " ساعة")
+print("translated titles:", done, "| new this run:", fresh)
 save("translations.json", newcache)
 save("data.json", data)
 
