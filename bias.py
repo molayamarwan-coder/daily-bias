@@ -32,6 +32,26 @@ print("Loading FinBERT...")
 clf = pipeline("text-classification", model="ProsusAI/finbert", top_k=None, truncation=True)
 now = time.time()
 
+import re
+
+NOISE_START = ("how ", "why ", "what ", "is ", "are ", "will ", "should ", "can ", "could ",
+               "does ", "do ", "where ", "which ", "who ", "when ")
+NOISE_WORDS = ["stock price", "quote &", "quote and", "price, news", "etf)", "financial results",
+               "earnings call", "price target", "dividend", "should you buy", "sponsored",
+               "full story", "press release", "announces q", "announces third", "announces second"]
+
+def is_noise(title):
+    low = title.lower().strip()
+    if "?" in low or "؟" in low:
+        return True
+    if low.startswith(NOISE_START):
+        return True
+    if any(w in low for w in NOISE_WORDS):
+        return True
+    if re.search(r"\b(nyse|nasdaq|tsx|asx|lse)\s*:", low):
+        return True
+    return False
+    
 def read_feed(url, source=None, max_age=72):
     out = []
     try:
@@ -45,7 +65,7 @@ def read_feed(url, source=None, max_age=72):
             src = source
             if source == "Google News" and " - " in title:
                 title, src = title.rsplit(" - ", 1)
-            if title:
+            if title and not is_noise(title):
                 out.append({"title": title, "text": (title + " " + e.get("summary", "")).lower(),
                             "source": src or "News", "age_h": age_h})
     except Exception as ex:
