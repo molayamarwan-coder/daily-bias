@@ -90,7 +90,7 @@ result = {"updated": dt.datetime.utcnow().isoformat() + "Z", "assets": {}}
 
 for key, a in ASSETS.items():
     gurl = "https://news.google.com/rss/search?q=" + urllib.parse.quote_plus(a["query"] + " when:2d") + "&hl=en-US&gl=US&ceid=US:en"
-    specific = read_feed(gurl, "Google News")
+    specific = read_feed(gurl, "Google News"); print(key, "google news items:", len(specific))
     filtered = [i for i in generic if any(k in i["text"] for k in a["keywords"])]
     seen, matched = set(), []
     for i in sorted(specific + filtered, key=lambda i: i["age_h"]):
