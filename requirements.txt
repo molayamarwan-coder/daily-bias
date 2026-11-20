@@ -1,4 +1,4 @@
 feedparser
-transformers
+transformers<5
 sentencepiece
 sacremoses
