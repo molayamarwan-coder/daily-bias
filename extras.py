@@ -1,4 +1,4 @@
-import json, urllib.request, urllib.parse
+import json, time, urllib.request, urllib.parse
 import datetime as dt
 from zoneinfo import ZoneInfo
 
@@ -33,7 +33,7 @@ def translate(text):
         try:
             q = urllib.parse.urlencode({"client": "gtx", "sl": "en", "tl": "ar", "dt": "t", "q": text})
             res = fetch("https://translate.googleapis.com/translate_a/single?" + q)
-            out = "".join(p[0] for p in res[0] if p[0])
+            out = "".join(p[0] for p in res[0] if p[0]); time.sleep(1)
             if out:
                 return out
         except Exception as ex:
