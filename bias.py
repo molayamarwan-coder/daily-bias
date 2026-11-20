@@ -3,7 +3,9 @@ import datetime as dt
 import urllib.parse
 import feedparser
 from transformers import pipeline
-
+def gnews(q):
+    u = "https://news.google.com/rss/search?q=" + urllib.parse.quote_plus(q + " when:2d") + "&hl=en-US&gl=US&ceid=US:en"
+    return read_feed(u, "Google News")
 GENERIC_FEEDS = {
     "CNBC": "https://www.cnbc.com/id/10000664/device/rss/rss.html",
     "FXStreet": "https://www.fxstreet.com/rss/news",
@@ -13,7 +15,7 @@ GENERIC_FEEDS = {
 }
 
 ASSETS = {
-    "gold": {"name": "Gold (XAUUSD)", "query": "gold price OR XAUUSD",
+    "gold": {"name": "Gold (XAUUSD)", "query": "gold price", "extra": ["XAUUSD", "gold futures", "gold prices Fed"],
              "keywords": ["gold", "xau", "bullion", "safe haven", "fed ", "yields", "dollar", "inflation", "rate cut", "rate hike"]},
     "nas": {"name": "Nasdaq 100", "query": "Nasdaq 100",
             "keywords": ["nasdaq", "tech", "nvidia", "apple", "microsoft", "amazon", "alphabet", "tesla", "chip", "semiconductor"]},
@@ -90,7 +92,7 @@ result = {"updated": dt.datetime.utcnow().isoformat() + "Z", "assets": {}}
 
 for key, a in ASSETS.items():
     gurl = "https://news.google.com/rss/search?q=" + urllib.parse.quote_plus(a["query"] + " when:2d") + "&hl=en-US&gl=US&ceid=US:en"
-    specific = read_feed(gurl, "Google News"); print(key, "google news items:", len(specific))
+    specific = gnews(a["query"]); [specific.extend(gnews(q)) for q in a.get("extra", []) if len(specific) < 15]; print(key, "google news items:", len(specific)); print(key, "google news items:", len(specific))
     filtered = [i for i in generic if any(k in i["text"] for k in a["keywords"])]
     seen, matched = set(), []
     for i in sorted(specific + filtered, key=lambda i: i["age_h"]):
